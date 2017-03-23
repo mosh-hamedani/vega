@@ -14,4 +14,10 @@
       <option *ngFor="let m of models" value="{{ m.id }}">{{ m.name }}</option>
     </select>
   </div>
+  <h2>Features</h2>
+  <div *ngFor="let f of features" class="checkbox">
+    <label for="feature{{ f.id }}">
+      <input type="checkbox" id="feature{{ f.id }}"> {{ f.name }}
+    </label>
+  </div>
 </form>
