@@ -43,5 +43,8 @@
     "webpack-hot-middleware": "^2.12.2",
     "webpack-merge": "^0.14.1",
     "zone.js": "^0.7.6"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.0.0-rc.4"
   }
 }
