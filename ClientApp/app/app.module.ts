@@ -1,11 +1,12 @@
 import { FormsModule } from '@angular/forms'; 
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ToastyModule } from 'ng2-toasty';
 import { UniversalModule } from 'angular2-universal';
 
-import { VehicleService } from './services/vehicle.service';
 import { AppComponent } from './components/app/app.component'
+import { AppErrorHandler } from './app.error-handler';
+import { VehicleService } from './services/vehicle.service';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
@@ -36,6 +37,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
         ])
     ],
     providers: [
+      { provide: ErrorHandler, useClass: AppErrorHandler },
       VehicleService
     ]
 })
