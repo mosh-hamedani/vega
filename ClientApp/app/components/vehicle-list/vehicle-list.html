@@ -2,6 +2,13 @@
 <p>
   <a [routerLink]="['/vehicles/new']" class="btn btn-primary">New Vehicle</a>
 </p>
+<div class="form-group well">
+  <label for="make">Make</label>
+  <select id="make" class="form-control" [(ngModel)]="filter.makeId" (change)="onFilterChange()">
+    <option value=""></option>
+    <option *ngFor="let m of makes" value="{{ m.id }}">{{ m.name }}</option>
+  </select>
+</div>
 <table class="table">
   <thead>
     <tr>
