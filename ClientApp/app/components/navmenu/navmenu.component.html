@@ -12,9 +12,9 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-home'></span> Home
+                <li [routerLinkActive]="['link-active']"  [routerLinkActiveOptions]="{exact: true}">
+                    <a [routerLink]="['/vehicles']">
+                        <span class='glyphicon glyphicon-home'></span> Vehicles
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
