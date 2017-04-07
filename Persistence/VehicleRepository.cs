@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using vega.Core;
 using vega.Core.Models;
+using vega.Extensions;
 
 namespace vega.Persistence
 {
@@ -60,16 +61,13 @@ namespace vega.Persistence
       {
         ["make"] = v => v.Model.Make.Name,
         ["model"] = v => v.Model.Name,
-        ["contactName"] = v => v.ContactName,
-        ["id"] = v => v.Id
+        ["contactName"] = v => v.ContactName
       };
 
-      if (queryObj.IsSortAscending)
-        query = query.OrderBy(columnsMap[queryObj.SortBy]);
-      else
-        query = query.OrderByDescending(columnsMap[queryObj.SortBy]);
+      query = query.ApplyOrdering(queryObj, columnsMap);
       
       return await query.ToListAsync();
     }
+
   }
 }
