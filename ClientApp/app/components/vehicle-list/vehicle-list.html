@@ -16,7 +16,14 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th (click)="sortBy('make')">Make</th>
+      <th (click)="sortBy('make')">
+        Make
+        <i *ngIf="query.sortBy === 'make'" 
+          class="fa"
+          [class.fa-sort-asc]="query.isSortAscending"
+          [class.fa-sort-desc]="!query.isSortAscending"
+        ></i>
+      </th>
       <th (click)="sortBy('model')">Model</th>
       <th (click)="sortBy('contactName')">Contact Name</th>
       <th></th>
