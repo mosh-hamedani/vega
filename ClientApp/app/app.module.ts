@@ -1,3 +1,5 @@
+import { BrowserXhr } from '@angular/http';
+import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
 import { PaginationComponent } from './components/shared/pagination.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
@@ -51,8 +53,10 @@ Raven.config('https://d37bba0c459b46e0857e6e2b3aeff09b@sentry.io/155312').instal
     ],
     providers: [
       { provide: ErrorHandler, useClass: AppErrorHandler },
+      { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
       VehicleService,
-      PhotoService
+      PhotoService,
+      ProgressService
     ]
 })
 export class AppModule {
