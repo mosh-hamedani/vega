@@ -1,3 +1,4 @@
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-gaurd.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { Auth } from './services/auth.service';
@@ -49,7 +50,7 @@ Raven.config('https://d37bba0c459b46e0857e6e2b3aeff09b@sentry.io/155312').instal
             { path: 'vehicles/edit/:id', component: VehicleFormComponent },
             { path: 'vehicles/:id', component: ViewVehicleComponent },
             { path: 'vehicles', component: VehicleListComponent },
-            { path: 'admin', component: AdminComponent, canActivate: [ AuthGuard ] },
+            { path: 'admin', component: AdminComponent, canActivate: [ AdminAuthGuard ] },
             { path: 'home', component: HomeComponent },
             { path: '**', redirectTo: 'home' }
         ])
@@ -59,6 +60,7 @@ Raven.config('https://d37bba0c459b46e0857e6e2b3aeff09b@sentry.io/155312').instal
       { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
       Auth,
       AuthGuard,
+      AdminAuthGuard,
       VehicleService,
       PhotoService,
       ProgressService

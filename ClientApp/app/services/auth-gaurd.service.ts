@@ -1,17 +1,17 @@
+import { CanActivate } from '@angular/router';
 import { Auth } from './auth.service';
 import { Injectable } from '@angular/core';
-import { CanActivate } from "@angular/router";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private auth: Auth) { }
+  constructor(protected auth: Auth) { }
 
-  canActivate() {
+  canActivate() { 
     if (this.auth.authenticated())
-      return true; 
-    
-    this.auth.login();
-    return false; 
+      return true;
+
+    window.location.href = 'https://vegaproject.auth0.com/login?client=RfRu3un13aOO73C7X2mH41qxfHRbUc33';
+    return false;
   }
 }

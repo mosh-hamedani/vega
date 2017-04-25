@@ -18,7 +18,7 @@ export class Auth {
   constructor() {    
     this.readUserFromLocalStorage();
 
-    this.lock.on("authenticated", this.onUserAuthenticated);
+    this.lock.on("authenticated", (authResult) => this.onUserAuthenticated(authResult));
   }
 
   private onUserAuthenticated(authResult) {
