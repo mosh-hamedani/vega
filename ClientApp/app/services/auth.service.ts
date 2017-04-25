@@ -15,7 +15,26 @@ export class Auth {
   // Configure Auth0
   lock = new Auth0Lock('RfRu3un13aOO73C7X2mH41qxfHRbUc33', 'vegaproject.auth0.com', {});
 
-  constructor() {
+  constructor() {    
+    this.readUserFromLocalStorage();
+
+    this.lock.on("authenticated", this.onUserAuthenticated);
+  }
+
+  private onUserAuthenticated(authResult) {
+    localStorage.setItem('token', authResult.accessToken);
+
+    this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
+      if (error)
+        throw error;
+
+      localStorage.setItem('profile', JSON.stringify(profile));
+
+      this.readUserFromLocalStorage();
+    });
+  }
+
+  private readUserFromLocalStorage() {
     this.profile = JSON.parse(localStorage.getItem('profile'));
 
     var token = localStorage.getItem('token');
@@ -24,24 +43,6 @@ export class Auth {
       var decodedToken = jwtHelper.decodeToken(token);
       this.roles = decodedToken['https://vega.com/roles'];
     }
-
-    // Add callback for lock `authenticated` event
-    this.lock.on("authenticated", (authResult) => {
-      localStorage.setItem('token', authResult.accessToken);
-
-      var jwtHelper = new JwtHelper();
-      var decodedToken = jwtHelper.decodeToken(authResult.accessToken);
-      this.roles = decodedToken['https://vega.com/roles'];
-
-      this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
-        if (error)
-          throw error;
-
-        console.log(profile);
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.profile = profile;
-      });
-    });
   }
 
   public isInRole(roleName) {
