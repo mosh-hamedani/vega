@@ -47,8 +47,8 @@ Raven.config('https://d37bba0c459b46e0857e6e2b3aeff09b@sentry.io/155312').instal
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         RouterModule.forRoot([
             { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
-            { path: 'vehicles/new', component: VehicleFormComponent },
-            { path: 'vehicles/edit/:id', component: VehicleFormComponent },
+            { path: 'vehicles/new', component: VehicleFormComponent, canActivate: [ AuthGuard ] },
+            { path: 'vehicles/edit/:id', component: VehicleFormComponent, canActivate: [ AuthGuard ] },
             { path: 'vehicles/:id', component: ViewVehicleComponent },
             { path: 'vehicles', component: VehicleListComponent },
             { path: 'admin', component: AdminComponent, canActivate: [ AdminAuthGuard ] },
