@@ -13,6 +13,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ToastyModule } from 'ng2-toasty';
 import { UniversalModule } from 'angular2-universal';
+import { ChartModule } from 'angular2-chartjs';
 
 import { AppComponent } from './components/app/app.component'
 import { AppErrorHandler } from './app.error-handler';
@@ -42,9 +43,10 @@ Raven.config('https://d37bba0c459b46e0857e6e2b3aeff09b@sentry.io/155312').instal
         AdminComponent
     ],
     imports: [
+        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         FormsModule,
         ToastyModule.forRoot(),
-        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        ChartModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent, canActivate: [ AuthGuard ] },
