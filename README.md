@@ -7,5 +7,6 @@ $ npm install
 $ dotnet restore
 $ webpack --config webpack.config.vendor.js
 $ webpack 
+$ dotnet ef database update
 $ dotnet watch run 
 ```
