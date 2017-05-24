@@ -41,7 +41,7 @@ export class Auth {
     if (token) {
       var jwtHelper = new JwtHelper();
       var decodedToken = jwtHelper.decodeToken(token);
-      this.roles = decodedToken['https://vega.com/roles'];
+      this.roles = decodedToken['https://vega.com/roles'] || [];
     }
   }
 
