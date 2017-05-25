@@ -5,6 +5,7 @@ A sample vehicle dealer app built with Angular 2, ASP.NET Core and Entity Framew
 ```
 $ npm install
 $ dotnet restore
+$ dotnet user-secrets set ConnectionStrings:Default "<YOUR CONNETION STRING>"
 $ webpack --config webpack.config.vendor.js
 $ webpack 
 $ dotnet ef database update
