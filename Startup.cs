@@ -20,8 +20,12 @@ namespace Vega
         var builder = new ConfigurationBuilder()
             .SetBasePath(env.ContentRootPath)
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-            .AddEnvironmentVariables();
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+        if (env.IsDevelopment())
+            builder = builder.AddUserSecrets<Startup>();
+
+        builder = builder.AddEnvironmentVariables();
         Configuration = builder.Build();
     }
 
