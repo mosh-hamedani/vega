@@ -21,7 +21,7 @@
     "angular2-universal-polyfills": "^2.1.0-rc.1",
     "aspnet-prerendering": "^2.0.0",
     "aspnet-webpack": "^1.0.17",
-    "auth0-lock": "^10.15.0",
+    "auth0-lock": "^11.26.3",
     "awesome-typescript-loader": "^3.0.0",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.5.0",
